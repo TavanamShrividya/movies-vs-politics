@@ -18,5 +18,8 @@ ops.to_csv("organized_data/wars.csv", mode = 'a', header = False, index = False)
 df = pd.read_csv("organized_data/wars.csv", usecols=['start_year']).drop_duplicates('start_year').sort_values(by= "start_year")
 df.rename(columns={'start_year':'Year'}, inplace=True)
 
+# removing 2025 to align with the elections dataset
+df= df[~df["Year"].isin([2025])]
+
 df.to_csv("organized_data/wars.csv", index=0)
 

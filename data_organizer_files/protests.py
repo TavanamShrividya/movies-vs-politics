@@ -17,4 +17,7 @@ number.columns = ['protests','Protests']
 
 number.rename(columns={'protests':'Year'}, inplace=True)
 
+# removing 2023, 2024, 2025, 2026 to align with the elections dataset
+number= number[~number["Year"].isin(['2023', '2024','2025', '2026'])]
+
 number.to_csv("organized_data/protests.csv", index=0)

@@ -37,4 +37,7 @@ war_movies.rename(columns={'count':'War'}, inplace=True)
 
 combined = pd.concat([result,war_movies], axis=1)
 
+# removing 2023, 2024 to align with the elections dataset
+combined= combined[~combined["Year"].isin(['2023', '2024'])]
+
 combined.to_csv("organized_data/movies.csv", index=0)
