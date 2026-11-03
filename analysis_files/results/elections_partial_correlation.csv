@@ -1,0 +1,8 @@
+Genre,Partial r (Year held fixed),p
+Action,-0.28,0.2764
+Comedy,-0.2536,0.326
+Crime,0.0583,0.8242
+Non-fiction,0.2167,0.4035
+Drama,0.5098,0.0366
+Horror,-0.5119,0.0357
+Romance,-0.5324,0.0278
