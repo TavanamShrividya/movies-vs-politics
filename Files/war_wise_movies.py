@@ -13,18 +13,25 @@ df[genres] = df[genres] * 100
 
 ax = df.plot(
     x="Period",
-    y=genres,
-    kind="barh",
-    stacked=True,
-    figsize=(11, 8),
-    colormap="tab10"
+    y=genres, 
+    kind="line",
+    marker="o",
+    figsize=(16, 9),
+    colormap="tab10",
 )
 
-ax.set_title("Movie Genres by War Period")
-ax.set_xlabel("Share of movies (%)")
-ax.set_ylabel("Year range")
-ax.set_xlim(0, 100)
-ax.legend(title="Genre", bbox_to_anchor=(1.02, 1), loc="upper left")
+war_line = ax.lines[genres.index("War")]
+war_line.set_zorder(10)
+war_line.set_linewidth(3)
+
+# Show every period label along the bottom
+ax.set_xticks(range(len(df)))
+ax.set_xticklabels(df["Period"], rotation=90, ha="center")
+
+ax.set_title("Movie Genre Ratios by Period")
+ax.set_xlabel("Start year–end year")
+ax.set_ylabel("Share of movies (%)")
+ax.legend(title="Genre")
 
 plt.tight_layout()
 plt.savefig("war_wise_movies.png", dpi=300, bbox_inches="tight")
