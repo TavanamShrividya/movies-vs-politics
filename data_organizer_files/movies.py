@@ -36,9 +36,7 @@ war_movies= pd.read_csv("raw_data/war_themed_movies.csv", usecols=['count'])
 war_movies.rename(columns={'count':'War'}, inplace=True)
 
 combined = pd.concat([result,war_movies], axis=1)
-genres = combined.columns.drop('Year')
 
-combined[genres] = combined[genres].div(combined[genres].sum(axis=1), axis=0).round(4)
 # removing 2023, 2024 to align with the elections dataset
 combined= combined[~combined["Year"].isin(['2023', '2024'])]
 
