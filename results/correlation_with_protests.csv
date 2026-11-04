@@ -1,0 +1,9 @@
+genre,Correlation,With change in protests,prev. year protests vs curr. year movies
+Non-fiction,0.679,-0.1,0.74
+Romance,-0.637,0.007,-0.551
+Action,-0.627,0.222,-0.712
+Comedy,0.525,0.303,0.604
+Drama,0.337,0.115,0.567
+Crime,-0.222,-0.099,-0.258
+War,-0.104,-0.234,-0.691
+Horror,-0.028,-0.397,-0.061

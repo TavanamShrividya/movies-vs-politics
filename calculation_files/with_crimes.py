@@ -19,6 +19,7 @@ corr_diff=full[genres].corrwith(crime_change)
 #to see correlation between previous years crimes and this years movies
 full_lag =full[genres].shift(1).corrwith(full['Crimes'])
 
-result = pd.DataFrame({'genre':genres,'Correlation':corr, 'With change in crimes': corr_diff, 'prev. year crimes vs curr. year movies': full_lag}).round(3)
+result= pd.DataFrame({'genre':genres,'Correlation':corr, 'With change in crimes': corr_diff, 'prev. year crimes vs curr. year movies': full_lag}).round(3)
 
+result =result.sort_values('Correlation', key=abs, ascending=False)
 result.to_csv("results/correlation_with_crimes.csv", index=0)
