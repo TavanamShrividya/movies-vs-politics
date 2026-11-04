@@ -1,0 +1,9 @@
+genre,Correlation
+Comedy,0.872
+Drama,0.794
+Non-fiction,0.718
+War,0.684
+Action,-0.027
+Romance,-0.188
+Horror,-0.355
+Crime,-0.615
