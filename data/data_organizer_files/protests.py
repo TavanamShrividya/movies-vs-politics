@@ -5,7 +5,7 @@ import pandas as pd
 # 'end_date' is not used as it doesn't show the start of dissatisfaction
 # sorted by the date, calculating number of protests per year
 
-protests = pd.read_csv("raw_data/protest_dataset.csv", usecols=['start_date'])
+protests = pd.read_csv("data/raw_data/protest_dataset.csv", usecols=['start_date'])
 
 # to get year
 protests['start_date']=protests['start_date'].str.split('-').str[0].str.strip()
@@ -20,4 +20,4 @@ number.rename(columns={'protests':'Year'}, inplace=True)
 # removing 2023, 2024, 2025, 2026 to align with the elections dataset
 number= number[~number["Year"].isin(['2023', '2024','2025', '2026'])]
 
-number.to_csv("organized_data/protests.csv", index=0)
+number.to_csv("data/organized_data/protests.csv", index=0)

@@ -2,8 +2,8 @@ import pandas as pd
 
 #simple linear regression with crime and movie genres
 #reading crimes and movies
-crimes=pd.read_csv("organized_data/crimes.csv")
-movies=pd.read_csv("organized_data/movies_ratio.csv")
+crimes=pd.read_csv("data/organized_data/crimes.csv")
+movies=pd.read_csv("data/organized_data/movies_ratio.csv")
 
 #merge tables acc to year, get genre columns
 full=movies.merge(crimes,on='Year')
@@ -35,5 +35,5 @@ result = pd.concat([res_0,res_1], axis=1)
 result.insert(0,'Genre',genres)
 
 result =result.sort_values('slope_0', key=abs, ascending=False).round(3)
-result.to_csv("regression_results/regression_crimes_on_genres.csv", index=0)
+result.to_csv("regression/regression_results/regression_crimes_on_genres.csv", index=0)
 

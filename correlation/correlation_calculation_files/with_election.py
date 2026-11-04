@@ -2,8 +2,8 @@ import pandas as pd
 
 #finding correlation of election win percentages and movie genres
 #reading elections and movies
-elections=pd.read_csv("organized_data/elections.csv", usecols=["YEAR","PERCENTAGE"])
-movies=pd.read_csv("organized_data/movies_election_periods.csv", usecols=lambda c: c not in ["End_Year"])
+elections=pd.read_csv("data/organized_data/elections.csv", usecols=["YEAR","PERCENTAGE"])
+movies=pd.read_csv("data/organized_data/movies_election_periods.csv", usecols=lambda c: c not in ["End_Year"])
 
 #merge tables acc to year, get genre columns
 full=movies.merge(elections,left_on="Start_Year",right_on="YEAR")
@@ -23,4 +23,4 @@ full_lag =full[genres].shift(1).corrwith(full['PERCENTAGE'])
 result= pd.DataFrame({'genre':genres,'Correlation':corr, 'With change in election win percentage': corr_diff, 'prev. tenure win percent vs curr. tenure movies': full_lag}).round(3)
 
 result =result.sort_values('Correlation', key=abs, ascending=False)
-result.to_csv("correlation_results/correlation_with_elections.csv", index=0)
+result.to_csv("correlation/correlation_results/correlation_with_elections.csv", index=0)

@@ -1,7 +1,14 @@
 import pandas as pd
 
 # Organizing movies_dataset.csv - 1950 to 2024
-movies= pd.read_csv("raw_data/movies_dataset.csv", usecols=['Year','Genre']).sort_values(by="Year")
+movies= pd.read_csv("data/raw_data/movies_dataset.csv", usecols=['Year','Genre']).sort_values(by="Year")
+
+#getting election years
+elections = pd.read_csv("data/raw_data/elections_dataset.csv",usecols=["YEAR"])
+election_years = sorted(elections["YEAR"].dropna().astype(int).unique())
+
+# getting periods between consecutive elections
+periods = list(zip(election_years[:-1], election_years[1:]))
 
 # Picking primary genre for all movies, removing movies with no specified genre
 movies['Genre']= movies['Genre'].str.split(',').str[0].str.strip()
@@ -32,12 +39,28 @@ result = result.drop(columns=['Biography','History'])
 result.rename(columns={'Documentary':'Non-fiction'}, inplace=True)
 
 # append war_movies to movies.csv
-war_movies= pd.read_csv("raw_data/war_themed_movies.csv", usecols=['count'])
+war_movies= pd.read_csv("data/raw_data/war_themed_movies.csv", usecols=['count'])
 war_movies.rename(columns={'count':'War'}, inplace=True)
 
-combined = pd.concat([result,war_movies], axis=1)
+and_wars = pd.concat([result,war_movies], axis=1)
 
+yearly = and_wars.set_index("Year")
+yearly.index = yearly.index.astype(int)
+results = []
+for start, end in periods:
+     period_counts = yearly.loc[(yearly.index>=start)&(yearly.index < end)].sum()
+  
+     row = period_counts.to_dict()
+     row["Start_Year"] = start
+     row["End_Year"] = end
+     results.append(row)
+
+combined=pd.DataFrame(results)
+combined = combined[["Start_Year", "End_Year"] + [col for col in combined.columns if col not in ["Start_Year", "End_Year"]]]
+genres=combined.columns.drop(["Start_Year", "End_Year"])
+
+combined[genres] = combined[genres].div(combined[genres].sum(axis=1), axis=0).round(4)
 # removing 2023, 2024 to align with the elections dataset
-combined= combined[~combined["Year"].isin(['2023', '2024'])]
+combined=combined[combined["End_Year"] <= 2022]
 
-combined.to_csv("organized_data/movies.csv", index=0)
+combined.to_csv("data/organized_data/election_wise_movies.csv", index=0)

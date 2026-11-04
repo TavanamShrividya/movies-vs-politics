@@ -2,8 +2,8 @@ import pandas as pd
 
 #finding correlation of crimes and movie genres
 #reading crimes and movies
-crimes=pd.read_csv("organized_data/crimes.csv")
-movies=pd.read_csv("organized_data/movies_ratio.csv")
+crimes=pd.read_csv("data/organized_data/crimes.csv")
+movies=pd.read_csv("data/organized_data/movies_ratio.csv")
 
 #merge tables acc to year, get genre columns
 full=movies.merge(crimes,on='Year')
@@ -22,4 +22,4 @@ full_lag =full[genres].shift(1).corrwith(full['Crimes'])
 result= pd.DataFrame({'genre':genres,'Correlation':corr, 'With change in crimes': corr_diff, 'prev. year crimes vs curr. year movies': full_lag}).round(3)
 
 result =result.sort_values('Correlation', key=abs, ascending=False)
-result.to_csv("correlation_results/correlation_with_crimes.csv", index=0)
+result.to_csv("correlation/correlation_results/correlation_with_crimes.csv", index=0)

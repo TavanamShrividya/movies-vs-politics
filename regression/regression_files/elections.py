@@ -2,8 +2,8 @@ import pandas as pd
 
 #simple linear regression with elections (% win rate of party) and movie genres
 #reading elections and movies
-elections=pd.read_csv("organized_data/elections.csv", usecols=["YEAR","PERCENTAGE"])
-movies=pd.read_csv("organized_data/movies_election_periods.csv", usecols=lambda c: c not in ["End_Year"])
+elections=pd.read_csv("data/organized_data/elections.csv", usecols=["YEAR","PERCENTAGE"])
+movies=pd.read_csv("data/organized_data/movies_election_periods.csv", usecols=lambda c: c not in ["End_Year"])
 
 #merge tables acc to year, get genre columns
 full=movies.merge(elections,left_on="Start_Year",right_on="YEAR")
@@ -36,4 +36,4 @@ result = pd.concat([res_0,res_1], axis=1)
 result.insert(0,'Genre',genres)
 
 result =result.sort_values('slope_0', key=abs, ascending=False).round(3)
-result.to_csv("regression_results/regression_elections_on_genres.csv", index=0)
+result.to_csv("regression/regression_results/regression_elections_on_genres.csv", index=0)
