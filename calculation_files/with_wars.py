@@ -8,7 +8,6 @@ wars = pd.read_csv("../organized_data/wars.csv")
 war_years = sorted(wars["Year"].dropna().astype(int).unique())
 genres = [col for col in movies.columns if col != "Year"]
 
-# War movie count as a share of all genre counts that year
 movies["War_Share"] = movies["War"] / movies[genres].sum(axis=1)
 
 event_results = []
@@ -33,8 +32,7 @@ for i, war_year in enumerate(war_years):
         "war_year": war_year,
         "peak_year": int(peak["Year"]),
         "years_until_peak": int(peak["Year"] - war_year),
-        "peak_war_movie_count": int(peak["War"]),
-        "peak_war_genre_share": peak["War_Share"]
+        "peak_war_movie_count": int(peak["War"])
     })
 
 events = pd.DataFrame(event_results).round(2)
