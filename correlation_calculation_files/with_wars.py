@@ -2,8 +2,8 @@ import pandas as pd
 
 MAX_LAG = 10
 
-movies = pd.read_csv("../organized_data/movies.csv").sort_values("Year")
-wars = pd.read_csv("../organized_data/wars.csv")
+movies = pd.read_csv("organized_data/movies.csv").sort_values("Year")
+wars = pd.read_csv("organized_data/wars.csv")
 
 war_years = sorted(wars["Year"].dropna().astype(int).unique())
 genres = [col for col in movies.columns if col != "Year"]
@@ -36,4 +36,4 @@ for i, war_year in enumerate(war_years):
     })
 
 events = pd.DataFrame(event_results).round(2)
-events.to_csv("../results/war_movie_peak_after_each_war.csv", index=False)
+events.to_csv("correlation_results/war_movie_peak_after_each_war.csv", index=False)

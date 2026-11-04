@@ -1,0 +1,10 @@
+genre,Correlation,With change in election win percentage,prev. tenure win percent vs curr. tenure movies
+Comedy,-0.721,-0.044,-0.721
+Horror,-0.698,0.009,-0.438
+War,0.652,-0.029,0.653
+Documentary,-0.568,0.119,-0.472
+Romance,-0.555,0.003,-0.55
+Drama,0.503,0.029,0.615
+Crime,-0.441,0.214,-0.339
+Action,-0.27,-0.084,-0.565
+Non-fiction,0.09,0.012,0.303

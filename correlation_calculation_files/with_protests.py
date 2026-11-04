@@ -22,4 +22,4 @@ full_lag =full[genres].shift(1).corrwith(full['Protests'])
 result= pd.DataFrame({'genre':genres,'Correlation':corr, 'With change in protests': corr_diff, 'prev. year protests vs curr. year movies': full_lag}).round(3)
 
 result =result.sort_values('Correlation', key=abs, ascending=False)
-result.to_csv("results/correlation_with_protests.csv", index=0)
+result.to_csv("correlation_results/correlation_with_protests.csv", index=0)
