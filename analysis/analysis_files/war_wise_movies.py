@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-df = pd.read_csv("../organized_data/war_wise_movies.csv")
+df = pd.read_csv("data/organized_data/war_wise_movies.csv")
 
 genres = [
     "Action", "Comedy", "Crime", "Non-fiction",
@@ -34,5 +34,5 @@ ax.set_ylabel("Share of movies (%)")
 ax.legend(title="Genre")
 
 plt.tight_layout()
-plt.savefig("war_wise_movies.png", dpi=300, bbox_inches="tight")
+plt.savefig("analysis/generated_charts/war_wise_movies.png", dpi=300, bbox_inches="tight")
 plt.show()

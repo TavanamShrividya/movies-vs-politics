@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-movies = pd.read_csv("organized_data/movies.csv")
-puc = pd.read_csv("organized_data/puc_2001_2012.csv")
+movies = pd.read_csv("data/organized_data/movies_ratio.csv")
+puc = pd.read_csv("data/organized_data/puc_2001_2012.csv")
 
 genres = ["Action", "Comedy", "Crime", "Non-fiction", "Drama", "Horror", "Romance", "War"]
 
@@ -38,5 +38,5 @@ plt.title("PUC vs ratio of movies in each genre")
 ax2.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=8)
 
 plt.tight_layout()
-plt.savefig("movies_vs_puc.png")
+plt.savefig("analysis/generated_charts/movies_vs_puc.png")
 plt.show()

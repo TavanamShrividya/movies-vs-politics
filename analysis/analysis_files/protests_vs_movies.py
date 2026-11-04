@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-movies = pd.read_csv("../organized_data/movies.csv")
-protests = pd.read_csv("../organized_data/protests.csv")
+movies = pd.read_csv("data/organized_data/movies_ratio.csv")
+protests = pd.read_csv("data/organized_data/protests.csv")
 
 df = pd.merge(movies, protests, on="Year", how="inner").sort_values("Year")
 
@@ -42,5 +42,5 @@ ax.set_ylim(0, 1.05)
 ax.legend(title="Category")
 
 plt.tight_layout()
-plt.savefig("movies_and_protests.png", dpi=300, bbox_inches="tight")
+plt.savefig("analysis/generated_charts/movies_and_protests.png", dpi=300, bbox_inches="tight")
 plt.show()

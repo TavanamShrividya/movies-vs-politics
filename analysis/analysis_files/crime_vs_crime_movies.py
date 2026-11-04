@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-crimes = pd.read_csv("../organized_data/crimes.csv")
-movies = pd.read_csv("../organized_data/movies.csv")
+crimes = pd.read_csv("data/organized_data/crimes.csv")
+movies = pd.read_csv("data/organized_data/movies_ratio.csv")
 
 df = pd.merge(
     crimes,
@@ -39,5 +39,5 @@ ax1.set_title("Reported Crimes and Crime Genre Movies Over Time")
 ax1.legend([line1, line2], [line1.get_label(), line2.get_label()], loc="best")
 
 plt.tight_layout()
-plt.savefig("crimes_vs_crime_movies.png", dpi=300, bbox_inches="tight")
+plt.savefig("analysis/generated_charts/crimes_vs_crime_movies.png", dpi=300, bbox_inches="tight")
 plt.show()
