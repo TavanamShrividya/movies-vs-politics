@@ -1,21 +1,4 @@
-"""Correlate movie genre ratios with winning-party election vote percentages.
 
-Run this script from the repository root. It reads:
-    organized_data/movies_ratio.csv
-    organized_data/elections.csv
-
-Alignment assumption:
-- If the election file has Start_Year and End_Year, each election is treated as
-  an inclusive period. Annual movie genre ratios in that interval are averaged
-  to create one genre profile for that election period.
-- Otherwise, the election file must have YEAR (or Start_Year) and each election
-  is aligned to the movie data for that exact year. No period boundaries are
-  inferred from gaps between election years.
-
-The output contains the basic Pearson correlation, correlation with the
-first difference in vote percentage, and correlation between the previous
-period's vote percentage and the current period's movie genre ratios.
-"""
 
 from pathlib import Path
 
