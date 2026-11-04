@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-movies = pd.read_csv("movies.csv")
-puc = pd.read_csv("puc_2001_2012.csv")
+movies = pd.read_csv("organized_data/movies.csv")
+puc = pd.read_csv("organized_data/puc_2001_2012.csv")
 
 genres = ["Action", "Comedy", "Crime", "Non-fiction", "Drama", "Horror", "Romance", "War"]
 
