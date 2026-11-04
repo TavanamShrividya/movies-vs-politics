@@ -21,6 +21,6 @@ plt.xticks(rotation=60)
 plt.legend(loc="upper center", bbox_to_anchor=(0.5, -0.25), ncol=8)
 plt.title("Ratio of movies in each genre in every election period")
 plt.tight_layout()
-plt.savefig("analysis_files/charts/elections_vs_movies.png", dpi=150)
+plt.savefig("analysis_files/elections_vs_movies.png", dpi=150)
 
 plt.show()

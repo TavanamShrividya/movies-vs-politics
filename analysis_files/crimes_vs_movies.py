@@ -34,7 +34,7 @@ ax2.legend(loc="upper center", bbox_to_anchor=(0.5, -0.1), ncol=8)
 
 plt.title("Crimes vs ratio of movies in each genre")
 plt.tight_layout()
-plt.savefig("analysis_files/charts/crimes_vs_movies.png", dpi=150)
+plt.savefig("analysis_files/crimes_vs_movies.png", dpi=150)
 
 # Chart 2 : crimes and crime movies
 fig, ax1 = plt.subplots(figsize=(10, 6))
@@ -49,6 +49,6 @@ ax2.set_ylabel("Ratio of crime movies", color="blue")
 
 plt.title("Crimes vs crime movies")
 plt.tight_layout()
-plt.savefig("analysis_files/charts/crimes_vs_crime_movies.png", dpi=150)
+plt.savefig("analysis_files/crimes_vs_crime_movies.png", dpi=150)
 
 plt.show()
