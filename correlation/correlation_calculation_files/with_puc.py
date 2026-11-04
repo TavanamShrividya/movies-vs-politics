@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-puc = pd.read_csv("../../data/organized_data/puc_2001_2012.csv")
-movies = pd.read_csv("../../data/organized_data/movies.csv")
+puc = pd.read_csv("data/organized_data/puc_2001_2012.csv")
+movies = pd.read_csv("data/organized_data/movies.csv")
 
 full = movies.merge(puc, on="Year", how="inner")
 genres = [col for col in movies.columns if col != "Year"]
@@ -16,7 +16,7 @@ correlations = (
 # Save the correlation for each genre
 correlation_file = correlations.rename_axis("genre").reset_index(name="Correlation")
 correlation_file.round(3).to_csv(
-    "../correlation_results/with_puc.csv",
+    "correlation/correlation_results/with_puc.csv",
     index=False
 )
 
@@ -33,7 +33,7 @@ plt.ylim(-1, 1)
 plt.tight_layout()
 
 plt.savefig(
-    "../graphs/movie_genre_puc_correlation.png",
+    "correlation/graphs/movie_genre_puc_correlation.png",
     dpi=300,
     bbox_inches="tight"
 )
